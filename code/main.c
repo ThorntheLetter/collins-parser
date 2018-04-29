@@ -4,7 +4,7 @@
    Statistical Models for Natural Language Parsing. PhD Dissertation,
    University of Pennsylvania.
 
-   Copyright (C) 1999 Michael Collins
+   Copyright (C) 1999 Michael Collins, Josie Kachelmeier
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -44,7 +44,9 @@
 #include "sentence.h"
 #include "chart.h"
 
-sentence_type sentences[2500];
+#define MAX_SENTENCES 20000
+
+sentence_type sentences[MAX_SENTENCES];
 
 int main(int argc, char *argv[])
 {
@@ -90,7 +92,7 @@ int main(int argc, char *argv[])
 
   read_grammar(grammar);
 
-  numsentences=read_sentences(words,sentences,2500);
+  numsentences=read_sentences(words,sentences,MAX_SENTENCES);
 
   fprintf(stderr,"NUMSENTENCES %d\n",numsentences);
 
