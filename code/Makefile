@@ -14,6 +14,9 @@ HDR =  lexicon.h grammar.h mymalloc.h mymalloc_char.h key.h hash.h genprob.h pro
 
 all: sfs
 
+debug: CFLAGS += -g
+debug: sfs
+
 $(OBJ) : $(HDR)
 
 ofiles: 
@@ -22,6 +25,6 @@ ofiles:
 sfs : main.o lexicon.o grammar.o mymalloc.o mymalloc_char.o key.o hash.o genprob.o prob.o effhash.o prob_witheffhash.o readevents.o sentence.o edges.o chart.o
 	gcc main.o lexicon.o grammar.o mymalloc.o mymalloc_char.o key.o hash.o genprob.o prob.o effhash.o prob_witheffhash.o readevents.o sentence.o edges.o chart.o -o parser $(CFLAGS) $(LIBS)
 
-cleanup:
-	rmz *.o
+clean:
+	rm -f *.o parser
 
